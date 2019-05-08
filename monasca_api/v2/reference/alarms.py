@@ -251,7 +251,7 @@ class Alarms(alarms_api_v2.AlarmsV2API,
 
         req_uri_no_id = req_uri.replace('/' + alarm_id, "")
         first_row = True
-        alarm = {}
+        alarm = {u'id': '123124'}
         for alarm_row in alarm_rows:
             if first_row:
                 ad = {u'id': alarm_row['alarm_definition_id'],
