@@ -248,11 +248,13 @@ class Alarms(alarms_api_v2.AlarmsV2API,
     def _alarm_show(self, req_uri, tenant_id, alarm_id):
 
         alarm_rows = self._alarms_repo.get_alarm(tenant_id, alarm_id)
-
+        print("enter alarm show function:")
+        print(alarm_rows)
         req_uri_no_id = req_uri.replace('/' + alarm_id, "")
         first_row = True
         alarm = {u'id': '123124'}
         for alarm_row in alarm_rows:
+            print("enter for case:")
             if first_row:
                 ad = {u'id': alarm_row['alarm_definition_id'],
                       u'name': alarm_row['alarm_definition_name'],
@@ -289,7 +291,7 @@ class Alarms(alarms_api_v2.AlarmsV2API,
                     dimensions[parsed_dimension[0]] = parsed_dimension[1]
 
             metrics.append(metric)
-
+        print("before leave function==")
         return alarm
 
     def _alarm_list(self, req_uri, tenant_id, query_parms, offset, limit):
