@@ -44,7 +44,8 @@ class Alarms(alarms_api_v2.AlarmsV2API,
 
         except Exception as ex:
             LOG.exception(ex)
-            raise exceptions.RepositoryException(ex)
+            raise falcon.HTTPInternalServerError('Service unavailable',
+                                                 str(ex))
 
     @resource.resource_try_catch_block
     def on_put(self, req, res, alarm_id):
